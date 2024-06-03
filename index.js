@@ -82,47 +82,47 @@ async function run() {
             res.send(result);
         });
         // user
-        // app.post("/user", async (req, res) => {
-        //     const user = req.body;
+        app.post("/user", async (req, res) => {
+            const user = req.body;
 
-        //     const token = createToken(user);
-        //     const isUserExist = await userCollection.findOne({ email: user?.email });
-        //     if (isUserExist?._id) {
-        //         return res.send({
-        //             statu: "success",
-        //             message: "Login success",
-        //             token,
-        //         });
-        //     }
-        //     await userCollection.insertOne(user);
-        //     //   return res.send({ token });
-        // });
+            // const token = createToken(user);
+            const isUserExist = await userCollection.findOne({ email: user?.email });
+            if (isUserExist?._id) {
+                return res.send({
+                    statu: "success",
+                    message: "Login success",
+                    // token,
+                });
+            }
+            await userCollection.insertOne(user);
+            //   return res.send({ token });
+        });
 
         // user/test@gmail
 
-        // app.get("/user/get/:id", async (req, res) => {
-        //   const id = req.params.id;
-        //   console.log(id);
-        //   const result = await userCollection.findOne({ _id: new ObjectId(id) });
-        //   res.send(result);
-        // });
+        app.get("/user/get/:id", async (req, res) => {
+            const id = req.params.id;
+            console.log(id);
+            const result = await userCollection.findOne({ _id: new ObjectId(id) });
+            res.send(result);
+        });
 
-        // app.get("/user/:email", async (req, res) => {
-        //   const email = req.params.email;
-        //   const result = await userCollection.findOne({ email });
-        //   res.send(result);
-        // });
+        app.get("/user/:email", async (req, res) => {
+            const email = req.params.email;
+            const result = await userCollection.findOne({ email });
+            res.send(result);
+        });
 
-        // app.patch("/user/:email", async (req, res) => {
-        //   const email = req.params.email;
-        //   const userData = req.body;
-        //   const result = await userCollection.updateOne(
-        //     { email },
-        //     { $set: userData },
-        //     { upsert: true }
-        //   );
-        //   res.send(result);
-        // });
+        app.patch("/user/:email", async (req, res) => {
+            const email = req.params.email;
+            const userData = req.body;
+            const result = await userCollection.updateOne(
+                { email },
+                { $set: userData },
+                { upsert: true }
+            );
+            res.send(result);
+        });
 
         console.log("Database is connected");
     } finally {
