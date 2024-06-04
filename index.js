@@ -47,6 +47,9 @@ async function run() {
         const userDB = client.db("userDB");
         const eventsCollection = eventsDB.collection("eventsCollection");
         const userCollection = userDB.collection("userCollection");
+        const featuredEventsCollection = eventsDB.collection("featuredEventsCollection");
+        const upcomingEventsCollection = eventsDB.collection("upcomingEventsCollection");
+        const chartdataCollection = eventsDB.collection("chartdataCollection");
         // Event
         app.post("/events", verifyToken, async (req, res) => {
             const eventsData = req.body;
@@ -59,6 +62,21 @@ async function run() {
             const result = await eventsData.toArray();
             res.send(result);
         });
+        app.get("/upcoming", async (req, res) => {
+            const upcomingData = upcomingEventsCollection.find();
+            const result = await upcomingData.toArray();
+            res.send(result);
+        });
+        app.get("/featured", async (req, res) => {
+            const featuredData = featuredEventsCollection.find();
+            const result = await featuredData.toArray();
+            res.send(result);
+        });
+        app.get("/data", async (req, res) => {
+            const chartData = chartdataCollection.find();
+            const result = await chartData.toArray();
+            res.send(result);
+        });
 
         app.get("/events/:id", async (req, res) => {
             const id = req.params.id;
@@ -67,6 +85,7 @@ async function run() {
             });
             res.send(eventsData);
         });
+
         app.patch("/events/:id", verifyToken, async (req, res) => {
             const id = req.params.id;
             const updatedData = req.body;
