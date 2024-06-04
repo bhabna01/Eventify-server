@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Eventify Backend Server
 
 This is the backend server for the Eventify website, an event management platform. The backend is built with Node.js, Express, and MongoDB, providing a RESTful API for performing CRUD operations on event data. Additionally, it utilizes JWT (JSON Web Tokens) for securing POST and DELETE operations.
@@ -39,3 +40,6 @@ Ensure you have the following installed:
     - dotenv: Module that loads environment variables from a .env file into process.env
     - jsonwebtoken: Implementation of JSON Web Tokens for generating and verifying tokens
 
+=======
+# Eventify-server
+>>>>>>> c81d547ed1ec2c9886c10928d3e4775993e37f90
