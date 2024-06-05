@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Eventify Backend Server
 
 This is the backend server for the Eventify website, an event management platform. The backend is built with Node.js, Express, and MongoDB, providing a RESTful API for performing CRUD operations on event data. Additionally, it utilizes JWT (JSON Web Tokens) for securing POST and DELETE operations.
